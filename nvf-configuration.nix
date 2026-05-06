@@ -4,7 +4,6 @@
     binds = {
       whichKey.enable = true;
     };
-    formatter.conform-nvim.enable = true;
     keymaps = [
       {
         key = "=";
@@ -48,13 +47,26 @@
         action = "zA";
       }
     ];
-    luaConfigRC.theme = "vim.cmd([[${builtins.readFile ./theme.vim}]])";
-    statusline.lualine.enable = true;
+    formatter.conform-nvim.enable = true;
+    diagnostics = {
+      enable = true;
+      config = {
+        virtual_lines = true;
+      };
+    };
     telescope = {
       enable = true;
+      mappings = {
+        diagnostics = "<leader>fd";
+      };
     };
     undoFile.enable = true;
-    autocomplete.nvim-cmp.enable = true;
+    autocomplete.nvim-cmp = {
+      enable = true;
+      mappings = {
+        close = "<C-c>";
+      };
+    };
     lsp.enable = true;
     treesitter = {
       indent.enable = true;
@@ -80,6 +92,13 @@
         cHeader = true;
         dap.enable = true;
       };
+    };
+
+    luaConfigRC.theme = "vim.cmd([[${builtins.readFile ./theme.vim}]])";
+    statusline.lualine.enable = true;
+    ui.borders.plugins.nvim-cmp = {
+      enable = true;
+      style = "double";
     };
   };
 
