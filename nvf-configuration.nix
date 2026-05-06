@@ -71,7 +71,9 @@
     treesitter = {
       indent.enable = true;
       fold = true;
+      autotagHtml = true;
     };
+    autopairs.nvim-autopairs.enable = true;
     options = {
       shiftwidth = 2;
       foldlevel = 6;
@@ -99,6 +101,10 @@
     ui.borders.plugins.nvim-cmp = {
       enable = true;
       style = "double";
+    };
+    ui.colorizer = {
+      enable = true;
+      setupOpts.user_default_options.mode = "virtualtext";
     };
   };
 
