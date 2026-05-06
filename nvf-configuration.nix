@@ -1,18 +1,74 @@
 { pkgs, ... }:
 {
   vim = {
-    theme = {
-      enable = true;
-      style = "darker";
-      name = "onedark";
+    binds = {
+      whichKey.enable = true;
     };
+    formatter.conform-nvim.enable = true;
+    keymaps = [
+      {
+        key = "=";
+        mode = "n";
+        action = ":lua vim.lsp.buf.format()<Cr>";
+      }
+      {
+        key = "<C-c>";
+        mode = "n";
+        action = "gcc";
+        noremap = false;
+      }
+      {
+        key = "<Tab>";
+        mode = "n";
+        action = "<C-w>";
+      }
+      {
+        key = "<C-i>";
+        mode = "n";
+        action = "<C-i>";
+      }
+      {
+        key = "<C-space>";
+        mode = "n";
+        action = ":botright 10split | terminal<CR>";
+      }
+      {
+        key = "<Esc>";
+        mode = "t";
+        action = "<C-\\><C-n>";
+      }
+      {
+        key = "zz";
+        mode = "n";
+        action = "za";
+      }
+      {
+        key = "za";
+        mode = "n";
+        action = "zA";
+      }
+    ];
+    luaConfigRC.theme = "vim.cmd([[${builtins.readFile ./theme.vim}]])";
     statusline.lualine.enable = true;
-    telescope.enable = true;
+    telescope = {
+      enable = true;
+    };
+    undoFile.enable = true;
     autocomplete.nvim-cmp.enable = true;
     lsp.enable = true;
-    treesitter.indent.enable = true;
+    treesitter = {
+      indent.enable = true;
+      fold = true;
+    };
     options = {
       shiftwidth = 2;
+      foldlevel = 6;
+      scrolloff = 18;
+      sidescrolloff = 10;
+    };
+    git = {
+      gitsigns.enable = true;
+      vim-fugitive.enable = true;
     };
     languages = {
       enableTreesitter = true;
