@@ -86,9 +86,21 @@
     };
     languages = {
       enableTreesitter = true;
+      enableFormat = true;
 
       nix.enable = true;
       go.enable = true;
+      rust = {
+        enable = true;
+        dap.enable = true;
+        lsp.opts = ''['rust-analyzer'] = 
+          {
+            diagnostics = {
+              enable = true,
+              experimental = {enable = true},
+            },
+        }'';
+      };
       clang = {
         enable = true;
         cHeader = true;
