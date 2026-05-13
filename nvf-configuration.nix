@@ -46,6 +46,11 @@
         mode = "n";
         action = "zA";
       }
+      {
+        key = "<C-f>";
+        mode = "n";
+        action = ":lua vim.lsp.buf.hover()<Cr>";
+      }
     ];
     formatter.conform-nvim.enable = true;
     diagnostics = {
@@ -93,13 +98,14 @@
       rust = {
         enable = true;
         dap.enable = true;
-        lsp.opts = ''['rust-analyzer'] = 
-          {
-            diagnostics = {
-              enable = true,
-              experimental = {enable = true},
-            },
-        }'';
+        lsp.opts = ''
+          ['rust-analyzer'] = 
+                    {
+                      diagnostics = {
+                        enable = true,
+                        experimental = {enable = true},
+                      },
+                  }'';
       };
       clang = {
         enable = true;
