@@ -17,6 +17,12 @@
         noremap = false;
       }
       {
+        key = "<C-c>";
+        mode = "v";
+        action = "gc";
+        noremap = false;
+      }
+      {
         key = "<Tab>";
         mode = "n";
         action = "<C-w>";
@@ -50,6 +56,16 @@
         key = "<C-f>";
         mode = "n";
         action = ":lua vim.lsp.buf.hover()<Cr>";
+      }
+      {
+        key = "f2";
+        mode = "n";
+        action = ":lua vim.lsp.buf.rename()<Cr>";
+      }
+      {
+        key = "<leader>a";
+        mode = "n";
+        action = ":lua vim.lsp.buf.code_action()<Cr>";
       }
     ];
     formatter.conform-nvim.enable = true;
