@@ -140,6 +140,12 @@
       enable = true;
       setupOpts.user_default_options.mode = "virtualtext";
     };
+    extraLuaFiles = [
+      (builtins.toFile
+      "config.lua"
+      "
+        vim.cmd('cnoreabbrev q qa!')
+      ")
+    ];
   };
-
 }
