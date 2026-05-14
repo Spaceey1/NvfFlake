@@ -144,7 +144,7 @@
       (builtins.toFile
       "config.lua"
       "
-        vim.cmd('cnoreabbrev q qa!')
+        vim.cmd('cnoreabbrev q q!')
       ")
     ];
   };
