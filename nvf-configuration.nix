@@ -108,12 +108,12 @@
     languages = {
       enableTreesitter = true;
       enableFormat = true;
+      enableDAP = true;
 
       nix.enable = true;
       go.enable = true;
       rust = {
         enable = true;
-        dap.enable = true;
         lsp.opts = ''
           ['rust-analyzer'] = 
                     {
@@ -126,8 +126,9 @@
       clang = {
         enable = true;
         cHeader = true;
-        dap.enable = true;
       };
+      python.enable = true;
+      lua.enable = true;
     };
 
     luaConfigRC.theme = "vim.cmd([[${builtins.readFile ./theme.vim}]])";
