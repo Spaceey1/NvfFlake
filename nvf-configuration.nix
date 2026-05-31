@@ -141,10 +141,13 @@
       enable = true;
       setupOpts.user_default_options.mode = "virtualtext";
     };
+    clipboard = {
+      enable = true;
+      registers = "unnamed";
+      providers.wl-copy.enable = true;
+    };
     extraLuaFiles = [
-      (builtins.toFile
-      "config.lua"
-      "
+      (builtins.toFile "config.lua" "
         vim.cmd('cnoreabbrev q q!')
       ")
     ];
