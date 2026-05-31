@@ -58,7 +58,7 @@
         action = ":lua vim.lsp.buf.hover()<Cr>";
       }
       {
-        key = "f2";
+        key = "<F2>";
         mode = "n";
         action = ":lua vim.lsp.buf.rename()<Cr>";
       }
