@@ -70,7 +70,7 @@
       {
         key = "<C-x>";
         mode = "n";
-        action = ":noh";
+        action = ":noh<Cr>";
       }
     ];
     formatter.conform-nvim.enable = true;
