@@ -67,6 +67,11 @@
         mode = "n";
         action = ":lua vim.lsp.buf.code_action()<Cr>";
       }
+      {
+        key = "<C-x>";
+        mode = "n";
+        action = ":noh";
+      }
     ];
     formatter.conform-nvim.enable = true;
     diagnostics = {
@@ -129,6 +134,7 @@
       };
       python.enable = true;
       lua.enable = true;
+      java.enable = true;
     };
 
     luaConfigRC.theme = "vim.cmd([[${builtins.readFile ./theme.vim}]])";
