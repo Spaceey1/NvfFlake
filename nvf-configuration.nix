@@ -1,9 +1,6 @@
-{ pkgs, ... }:
+{ ... }:
 {
   vim = {
-    binds = {
-      whichKey.enable = true;
-    };
     keymaps = [
       {
         key = "=";
@@ -72,12 +69,17 @@
         mode = "n";
         action = ":noh<Cr>";
       }
+      {
+        key = "<leader>e";
+        mode = "n";
+        action = ":Vexplore<Cr>";
+      }
     ];
     formatter.conform-nvim.enable = true;
     diagnostics = {
       enable = true;
       config = {
-        virtual_lines = true;
+        virtual_text = true;
       };
     };
     telescope = {
@@ -93,7 +95,19 @@
         close = "<C-c>";
       };
     };
-    lsp.enable = true;
+    lsp = {
+      enable = true;
+      servers = {
+        rust-analyzer = {
+          enable = true;
+          opts = {
+            diagnostics = {
+              enable = true;
+            };
+          };
+        };
+      };
+    };
     treesitter = {
       indent.enable = true;
       fold = true;
@@ -105,6 +119,7 @@
       foldlevel = 6;
       scrolloff = 18;
       sidescrolloff = 10;
+      mouse = "";
     };
     git = {
       gitsigns.enable = true;
@@ -115,37 +130,36 @@
       enableFormat = true;
       enableDAP = true;
 
-      nix.enable = true;
-      go.enable = true;
-      rust = {
-        enable = true;
-        lsp.opts = ''
-          ['rust-analyzer'] = 
-                    {
-                      diagnostics = {
-                        enable = true,
-                        experimental = {enable = true},
-                      },
-                  }'';
-      };
       clang = {
         enable = true;
         cHeader = true;
       };
+      nix.enable = true;
+      go.enable = true;
+      rust.enable = true;
       python.enable = true;
       lua.enable = true;
       java.enable = true;
+      fish.enable = true;
+      bash.enable = true;
     };
-
     luaConfigRC.theme = "vim.cmd([[${builtins.readFile ./theme.vim}]])";
-    statusline.lualine.enable = true;
-    ui.borders.plugins.nvim-cmp = {
+    statusline.lualine = {
       enable = true;
-      style = "double";
+      setupOpts.sections.lualine_b = [
+        {
+          "@1" = "filename";
+          path = 1;
+          separator.right = "";
+        }
+      ];
+    };
+    ui.borders = {
+      enable = true;
+      globalStyle = "shadow"; # Options: "none", "single", "double", "rounded", "solid", "shadow"
     };
     ui.colorizer = {
       enable = true;
-      setupOpts.user_default_options.mode = "virtualtext";
     };
     clipboard = {
       enable = true;
@@ -155,6 +169,7 @@
     extraLuaFiles = [
       (builtins.toFile "config.lua" "
         vim.cmd('cnoreabbrev q q!')
+        vim.cmd('cnoreabbrev wq wqa!')
       ")
     ];
   };
