@@ -142,6 +142,7 @@
       java.enable = true;
       fish.enable = true;
       bash.enable = true;
+      csharp.enable = true;
     };
     luaConfigRC.theme = "vim.cmd([[${builtins.readFile ./theme.vim}]])";
     statusline.lualine = {
