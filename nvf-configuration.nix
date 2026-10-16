@@ -123,6 +123,18 @@
       sidescrolloff = 10;
       mouse = "";
     };
+    autocmds = [
+      {
+        event = [ "BufWinLeave" ];
+        pattern = [ "*" ];
+        command = "if &buftype ==# '' | silent! mkview | endif";
+      }
+      {
+        event = [ "BufWinEnter" ];
+        pattern = [ "*" ];
+        command = "if &buftype ==# '' | silent! loadview | endif";
+      }
+    ];
     git = {
       gitsigns.enable = true;
       vim-fugitive.enable = true;
