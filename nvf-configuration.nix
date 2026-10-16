@@ -116,11 +116,25 @@
     autopairs.nvim-autopairs.enable = true;
     options = {
       shiftwidth = 2;
-      foldlevel = 6;
+      foldcolumn = "1";
+      fillchars = "fold: ,foldopen:,foldsep: ,foldclose:,foldinner: ";
+      statuscolumn = "%=%l%s%C";
       scrolloff = 18;
       sidescrolloff = 10;
       mouse = "";
     };
+    autocmds = [
+      {
+        event = [ "BufWinLeave" ];
+        pattern = [ "*" ];
+        command = "if &buftype ==# '' | silent! mkview | endif";
+      }
+      {
+        event = [ "BufWinEnter" ];
+        pattern = [ "*" ];
+        command = "if &buftype ==# '' | silent! loadview | endif";
+      }
+    ];
     git = {
       gitsigns.enable = true;
       vim-fugitive.enable = true;
@@ -159,6 +173,7 @@
       enable = true;
       globalStyle = "shadow"; # Options: "none", "single", "double", "rounded", "solid", "shadow"
     };
+    ui.nvim-ufo.enable = true;
     ui.colorizer = {
       enable = true;
     };
