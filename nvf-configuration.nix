@@ -154,6 +154,8 @@
           separator.right = "";
         }
       ];
+      setupOpts.sections.lualine_y = [];
+      setupOpts.sections.lualine_z = [];
     };
     ui.borders = {
       enable = true;
@@ -166,6 +168,14 @@
       enable = true;
       registers = "unnamed";
       providers.wl-copy.enable = true;
+    };
+    tabline.nvimBufferline = {
+      enable = true;
+      mappings = {
+        cycleNext = "cl";
+        cyclePrevious = "ch";
+        closeCurrent = "qq";
+      };
     };
     extraLuaFiles = [
       (builtins.toFile "config.lua" "
